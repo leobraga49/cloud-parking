@@ -10,9 +10,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ParkingControllerIT extends AbstractContainerBase {
@@ -28,6 +26,8 @@ class ParkingControllerIT extends AbstractContainerBase {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth()
+                .basic("user", "12345")
                 .when()
                 .get("/parking")
                 .then()
@@ -44,6 +44,9 @@ class ParkingControllerIT extends AbstractContainerBase {
         createDTO.setState("SP");
 
         RestAssured.given()
+
+                .auth()
+                .basic("user", "12345")
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(createDTO)

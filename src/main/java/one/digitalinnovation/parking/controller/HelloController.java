@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.annotations.ApiIgnore;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/hello")
 @ApiIgnore
 public class HelloController {
 
     @GetMapping
-    public String hello(){
+    public String hello() {
         return "hello";
     }
 }
