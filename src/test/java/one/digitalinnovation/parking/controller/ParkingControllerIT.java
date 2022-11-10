@@ -15,13 +15,13 @@ import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ParkingControllerIT {
+class ParkingControllerIT extends AbstractContainerBase {
 
     @LocalServerPort
     private int randomPort;
 
     @BeforeEach
-    public void setUpTest(){
+    public void setUpTest() {
         RestAssured.port = randomPort;
     }
 
